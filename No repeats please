@@ -1,0 +1,62 @@
+
+function permAlone(str) {
+  // Variables needed, auxArr as another array with zeros as an auxiliary resource to perform the permutation properly, a counter, and a regular expression that detects the repeating consecutive characters.
+  var auxArr= [], con=0, regex= /(\w)\1+/g;
+  
+  // This conditional verifies the string prior to permutation whether it has repeating characters or not.
+  if(!str.match(regex)) { con+=1;}
+  
+  
+  // Convertion of the string into an array.
+  str=str.split('');
+  // Now we fill the auxArr with zeroes and the same length as str array.
+  for(var i=0;i<str.length; i++ )
+      { 
+        auxArr[i]=0;
+      }
+  
+  //Swapping places between two existing elements from str through splice.
+  // sample: str.splice(0,1, str.splice(2,1,str[0])[0]);
+  
+  i=0;
+  
+  // Heap's algorythm loop
+  while (i<str.length)
+    {
+      if(auxArr[i]<i)
+        {
+          if(i%2 === 0)
+            {
+             //Swapping places between two existing elements from str through splice.
+              str.splice(0,1, str.splice(i,1,str[0])[0]);
+              str=str.join('');
+             if(!str.match(regex))
+               {
+                 con+=1;
+               }
+              str=str.split('');
+            }
+          else
+            {
+              str.splice(auxArr[i],1, str.splice(i,1,str[auxArr[i]])[0]);
+                str=str.join('');
+             if(!str.match(regex))
+               {
+                 con+=1;
+               }
+              str=str.split('');
+            }
+          auxArr[i]+=1;
+          i=0;
+        }
+      else
+        {
+          auxArr[i]=0;
+          i+=1;
+        }
+    }
+ 
+  return con;
+}
+
+permAlone("aab");
