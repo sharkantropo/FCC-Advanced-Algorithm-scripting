@@ -1,0 +1,258 @@
+function checkCashRegister(price, cash, cid) {
+  var change=Math.abs(price-cash);
+  // Here is your change, ma'am.
+  // Oh god, here we go...
+  
+  function cashInDrawer(remCash)
+  {
+    var multiplier,cashReturn=[],auxArr= [],auxMult,auxresult=0;
+    
+    if(remCash >= 100 && cid[8][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[8][0]);
+          auxArr.push(cid[8][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[8][1] > 0)
+            {
+              cid[8][1]=cid[8][1]-100;
+              cid[8][1]=Math.round(cid[8][1]*100)/100;
+              remCash=remCash-0.01;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(100); 
+           while(auxMult>0)
+             {
+               auxArr[1]+=100;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=100;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+      }
+     if(remCash >= 20 && cid[7][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[7][0]);
+          auxArr.push(cid[7][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[7][1] > 0)
+            {
+              cid[7][1]=cid[7][1]-20;
+              cid[7][1]=Math.round(cid[7][1]*100)/100;
+              remCash=remCash-20;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(20); 
+           while(auxMult>0)
+             {
+               
+               auxArr[1]+=20;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=20;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+        
+      }
+     if(remCash >= 10 && cid[6][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[6][0]);
+          auxArr.push(cid[6][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[6][1] > 0)
+            {
+              cid[6][1]=cid[6][1]-10;
+              cid[6][1]=Math.round(cid[6][1]*100)/100;
+              remCash=remCash-10;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(10); 
+           while(auxMult>0)
+             {
+               
+               auxArr[1]+=10;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=10;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+                cashReturn.push(auxArr);
+      }
+    if(remCash >= 5 && cid[5][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[5][0]);
+          auxArr.push(cid[5][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[5][1] > 0 && remCash>=5)
+            {
+              cid[5][1]=cid[5][1]-5;
+              cid[5][1]=Math.round(cid[5][1]*100)/100;
+              remCash=remCash-5;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(5); 
+           while(auxMult>0)
+             {              
+               auxArr[1]+=5;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=5;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+      }
+    if(remCash >= 1 && cid[4][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[4][0]);
+          auxArr.push(cid[4][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[4][1] > 0 && remCash>=1)
+            {
+              cid[4][1]=cid[4][1]-1;
+              cid[4][1]=Math.round(cid[4][1]*100)/100;
+              remCash=remCash-1;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(1); 
+           while(auxMult>0)
+             {              
+               auxArr[1]+=1;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=1;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+          }
+    if(remCash >= 0.25 && cid[3][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[3][0]);
+          auxArr.push(cid[3][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[3][1]>0 && remCash>=0.25)
+            {
+              cid[3][1]-=0.25;
+              remCash=remCash-0.25;
+              multiplier+=1;
+            }
+           auxMult= (multiplier)*(0.25); 
+           while(auxMult>0)
+             {
+               auxArr[1]+=0.25;
+               auxMult-=0.25;
+             }
+                cashReturn.push(auxArr);
+      }
+    if(remCash >= 0.10 && cid[2][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[2][0]);
+          auxArr.push(cid[2][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[2][1] > 0 && remCash>=0.10)
+            {
+              cid[2][1]=cid[2][1]-0.10;
+              cid[2][1]=Math.round(cid[2][1]*100)/100;
+              remCash=remCash-0.10;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(0.10); 
+           while(auxMult>0)
+             {              
+               auxArr[1]+=0.10;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=0.10;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+      }
+    if(remCash >= 0.05 && cid[1][1]> 0)
+      {
+          auxArr= [];
+          auxArr.push(cid[1][0]);
+          auxArr.push(cid[1][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[1][1]>0)
+            {
+              cid[1][1]-=0.05;
+              remCash=remCash-0.05;
+              multiplier+=1;
+            }
+           auxMult= (multiplier)*(0.05); 
+           while(auxMult>0)
+             {
+               auxArr[1]+=0.05;
+               auxMult-=0.05;
+             }
+             cashReturn.push(auxArr);
+      }
+    if(remCash >= 0.01 && cid[0][1]> 0 && cid[0][1] >= remCash)
+      {
+          auxArr= [];
+          auxArr.push(cid[0][0]);
+          auxArr.push(cid[0][1]);
+          auxArr[1]=0;
+          multiplier=0;
+          while(cid[0][1] > 0 && remCash>=0.01 )
+            {
+              cid[0][1]=cid[0][1]-0.01;
+              cid[0][1]=Math.round(cid[0][1]*100)/100;
+              remCash=remCash-0.01;
+              multiplier+=1;
+              remCash=Math.round(remCash*100)/100;
+            }
+           auxMult= (multiplier)*(0.01); 
+           while(auxMult>0)
+             {
+               
+               auxArr[1]+=0.01;
+               auxArr[1]=Math.round(auxArr[1]*100)/100;
+               auxMult-=0.01;
+               auxMult=Math.round(auxMult*100)/100;
+             }
+             cashReturn.push(auxArr);
+      }
+    if(remCash !== 0)
+      {
+        return  "Insufficient Funds";
+      }
+    else if (cid[8][1] === 0 && cid[7][1] === 0 && cid[6][1] === 0 && cid[5][1] === 0 && cid[4][1]=== 0 && cid[3][1] === 0 && cid[2][1] === 0 && cid[1][1] === 0 && cid[0][1] === 0)
+      {
+        return "Closed";
+      }
+    
+      return cashReturn;
+  }
+  
+  return cashInDrawer(change);
+ 
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.10],
+// ["QUARTER", 4.25],
+// ["ONE", 90.00],
+// ["FIVE", 55.00],
+// ["TEN", 20.00],
+// ["TWENTY", 60.00],
+// ["ONE HUNDRED", 100.00]]
+
+checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
