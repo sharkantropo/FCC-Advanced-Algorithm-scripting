@@ -1,0 +1,68 @@
+
+function sym(args) {
+  
+   var arrValues= [], units= [], newArrValues;
+  
+  // First we put all the passed arguments into an array.
+  for(var i in arguments){
+        units = arguments[i];
+
+         arrValues.push(units);      
+    }
+  
+  // This function will return the symmetric difference, first it takes two arrays as arguments and will put any value that is only available in one of the two arrays into a new array that shall be returned afterwards. 
+  function obtainSymDif(arr1,arr2)
+  {
+    var count=0, i=0, j=0;
+     var newArr=[];
+      for( i=0; i< arr1.length; i++)
+        {
+          count=0;
+          for( j=0; j< arr2.length;j++)
+            {
+              if(arr1[i] == arr2[j])
+                {
+                  count=1;
+                  break;
+                }
+       
+            }
+          if(count === 0)
+            {
+              newArr.push(arr1[i]);
+            }
+        }
+    for( i=0; i< arr2.length; i++)
+        {
+           count=0;
+          for(j=0; j<arr1.length;j++)
+            {
+              if(arr2[i] == arr1[j])
+                {
+                  count=1;
+                  break;
+                }
+       
+            }
+          if(count === 0)
+            {
+              newArr.push(arr2[i]);
+            }
+        }
+    return newArr;
+  }
+  
+  // I use .reduce here for convenience, so I don't have to loop through arrValues to obtain the total symmetric difference.
+   newArrValues=arrValues.reduce(obtainSymDif);
+  // Code then sorts the numbers in an increasing order.
+   newArrValues=newArrValues.sort();
+
+  // Then run a filter to remove duplicates.
+  var nonDupArray = newArrValues.filter(function(item, pos) {
+    return newArrValues.indexOf(item) == pos;
+});
+  
+  return nonDupArray;
+}
+
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);
