@@ -1,0 +1,70 @@
+
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+   var isString,auxArr= [],strArr=[], arr3= [];  
+      function updateAmount(newStock)
+       {
+         for(var j=0;j<arr1.length; j++)
+           {
+             if(arr1[j][1] === newStock[1])
+               {
+                 arr1[j][0]=arr1[j][0]+newStock[0];
+                 return newStock;
+               }
+           }
+       }
+      function itExistInventory(element, index, array) 
+       {
+        
+         return element[1] == isString;
+       }
+  
+    for(var i=0; i<arr2.length; i++)
+        {
+          auxArr= [];
+          auxArr.push(arr2[i]);       
+          isString=auxArr[0][1];
+           
+          if(!arr1.some(itExistInventory))
+              {  
+                arr1.push(auxArr[0]);
+                continue;
+              }
+          updateAmount(auxArr[0]);
+        }
+      for(i=0; i<arr1.length; i++)
+        {
+           strArr.push(arr1[i][1]);
+        }
+    strArr=strArr.sort();
+   for(i=0; i<strArr.length; i++)
+      {
+       for(var j=0; j<arr1.length; j++)
+         {
+           if(strArr[i] == arr1[j][1])
+           {
+             arr3.push(arr1[j]);
+           }
+         }
+      }
+  
+    return arr3;
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [3, "Half-Eaten Apple"],
+    [2, "Hair Pin"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
+//updateInventory([[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Microphone"]], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]);
