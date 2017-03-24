@@ -1,0 +1,37 @@
+
+function telephoneCheck(str) {
+  // Good luck!
+  // Regular expresions are a heck of confusing sometimes, but I'll get the hang of it.
+  var re= /^1?[-. ]?(\(?[0-9]{3}\)?)[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+  var keyMatch;
+  
+  keyMatch=str.match(re);
+  if(keyMatch === null)
+    {
+      return false;
+    }
+  else
+    {
+      // Alright, I believe it's posible to solve it with only one regExp, but I thought of this solution already.
+      var keySecond=keyMatch[1],count=0;
+        for(var i=0; i<keySecond.length; i++)
+          {
+            if(keySecond[i] === "(" || keySecond[i] === ")" )
+              {
+                count+=1;
+              }
+            
+          }
+       if(count == 1)
+         {
+           return false;
+         }
+       else
+         {
+           return true;
+         }
+    }
+  
+}
+
+telephoneCheck("1 555)555-5555");
