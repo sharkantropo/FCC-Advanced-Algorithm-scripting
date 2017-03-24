@@ -1,0 +1,27 @@
+
+function pairwise(arr, arg) 
+{
+  var preVal=NaN, auxArr= [];
+  for(var i=0; i<(arr.length-1); i++)
+    {
+      
+            for (var j=i+1; j<arr.length; j++)
+            {
+         
+                if((arr[i]+arr[j]) == arg)
+                {
+                    if(arr[j] != preVal)
+                      {
+                         auxArr.push(i);
+                         auxArr.push(j);
+                         arr[i]=arr[j]=NaN;
+                      }
+                }
+            }
+           
+    }
+  var redux = auxArr.reduce(function(a,b) {return a + b; }, 0);
+  return redux;
+}
+
+pairwise([1, 1, 1], 2);
